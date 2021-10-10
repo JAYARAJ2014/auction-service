@@ -19,9 +19,9 @@ npm install
 ```
 
 - serverless.yml defines the core resources for cloud formation
-- reosurces/AuctionsTable.yml defines the table name dynamically based on the stage you are deploying to. AuctionsTable-${self:provider.stage} 
+- reosurces/AuctionsTable.yml defines the table name dynamically based on the stage you are deploying to. AuctionsTable-${self:provider.stage}
 - iam/AuctionsTableIAM.yml defines IAM roles required by Lambda (Lambda Access DyanmoDb. Each action such as putitem,getitem and scan are given seperate permissions)
 
-- createAuction  HTTP POST
-- getAuctions          GET
-- getAuctions           GET
+- createAuction HTTP POST
+- getAuctions HTTP GET
+- getAuctions HTTP GET
