@@ -1,4 +1,4 @@
-import AWS from 'aws-sdk'
+import AWS from 'aws-sdk';
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
@@ -16,8 +16,7 @@ export async function getEndedAuctions(){
         ExpressionAttributeNames: {
           '#status': 'status',
         },
-      };
-    
+      };    
       const result = await dynamodb.query(params).promise();
       return result.Items;
 }
