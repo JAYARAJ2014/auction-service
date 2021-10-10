@@ -4,9 +4,8 @@ const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 export async function getEndedAuctions(){
     const now = new Date();
-
     const params = {
-        TableName: process.env.AUCTIONS_TABLE_NAME,
+        TableName: process.env.AUCTIONS_TABLENAME,
         IndexName: 'statusAndEndDate',
         KeyConditionExpression: '#status = :status AND endingAt <= :now',
         ExpressionAttributeValues: {
@@ -16,7 +15,7 @@ export async function getEndedAuctions(){
         ExpressionAttributeNames: {
           '#status': 'status',
         },
-      };    
+      };
       const result = await dynamodb.query(params).promise();
       return result.Items;
 }
