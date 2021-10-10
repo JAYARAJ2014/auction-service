@@ -26,3 +26,8 @@ npm install
 - getAuctions HTTP GET
 - getAuctions HTTP GET
 - placeBid HTTP PATCH
+
+- processAuctions Aws Event bridge rule
+
+TIP: You can tail the log using `sls logs -f processAuctions -t` command.
+

@@ -1,10 +1,8 @@
 service:
   name: auction-service
-
 plugins:
   - serverless-bundle
   - serverless-pseudo-parameters
-
 provider:
   name: aws
   runtime: nodejs14.x
@@ -37,6 +35,10 @@ functions:
       - http:
           method: GET
           path: /auction/{id}
+  processAuctions:
+    handler: src/handlers/processAuctions.handler
+    events:
+      - schedule: rate(1 minute)
   placeBid:
     handler: src/handlers/placeBid.handler
     events:
