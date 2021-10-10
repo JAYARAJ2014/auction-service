@@ -24,8 +24,8 @@ async function getAuction(event, context) {
     }
 
     if(!auction){
-        console.log('Item "${id}" not found');
-        throw new createError.NotFound ('Auction with Id "${id}" not found!');
+        console.log(`Item "${id}" not found`);
+        throw new createError.NotFound(`Auction with Id "${id}" not found!`);
     }
     return {
         statusCode: 200,
