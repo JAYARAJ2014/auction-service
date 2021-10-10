@@ -21,6 +21,7 @@ export async function getAuctionById (id){
         console.log(`Item "${id}" not found`);
         throw new createError.NotFound(`Auction with Id "${id}" not found!`);
     }
+    return auction;
 }
 async function getAuction(event, context) {
     const {id}=event.pathParameters;
