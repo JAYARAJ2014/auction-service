@@ -1,6 +1,6 @@
 # Micro Services example using AWS Serverless
 
-#### Codingly.io: Base Serverless Framework Template
+#### Copied this template from Codingly.io: Base Serverless Framework Template
 
 https://codingly.io
 
