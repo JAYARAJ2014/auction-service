@@ -25,3 +25,4 @@ npm install
 - createAuction HTTP POST
 - getAuctions HTTP GET
 - getAuctions HTTP GET
+- placeBid HTTP PATCH

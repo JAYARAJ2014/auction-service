@@ -15,6 +15,9 @@ async function createAuction(event, context) {
         title, //if your key and value are same just one is enough. title:tile
         status:'OPEN',
         createdAt:now.toISOString(),
+        highestBid: {
+            amount:0,
+        }
     };
     try {
         await dynamodb.put({
