@@ -1,6 +1,8 @@
 import AWS from 'aws-sdk';
 import commonMiddleware from './lib/commonMiddleware';
 import createError from 'http-errors';
+import validator from '@middy/validator';
+import getAuctionsSchema from './lib/schemas/getAuctionSchema';
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
@@ -8,7 +10,7 @@ async function getAuctions(event, context) {
     const {status} = event.queryStringParameters;
     console.log(`Status: ${status}`);
     if(!status) {
-        throw new createError.BadRequest('status is not provided');
+        throw new createError.BadRequest('Status is not provided');
     }
 
     let auctions;
@@ -38,4 +40,5 @@ async function getAuctions(event, context) {
     };
 }
 
-export const handler = commonMiddleware(getAuctions);
+export const handler = commonMiddleware(getAuctions)
+.use(validator({inputSchema: getAuctionsSchema,useDefaults:true}));
