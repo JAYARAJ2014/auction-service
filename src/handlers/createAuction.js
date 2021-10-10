@@ -10,11 +10,15 @@ async function createAuction(event, context) {
 // returns title as a key
     const {title} = event.body;
     const now = new Date();
+    const endDate = new Date();
+    endDate.setHours(now.getHours()+1);
+
     const auction = {
         id: uuid(),
         title, //if your key and value are same just one is enough. title:tile
         status:'OPEN',
         createdAt:now.toISOString(),
+        endingAt:endDate.toISOString() ,
         highestBid: {
             amount:0,
         }
