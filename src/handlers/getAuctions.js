@@ -5,13 +5,27 @@ import createError from 'http-errors';
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 async function getAuctions(event, context) {
+    const {status} = event.queryStringParameters;
+    console.log(`Status: ${status}`);
+    if(!status) {
+        throw new createError.BadRequest('status is not provided');
+    }
+
     let auctions;
+    const params = {
+        TableName: process.env.AUCTIONS_TABLENAME,
+        IndexName: 'statusAndEndDate',
+        KeyConditionExpression:  '#status = :status',
+        ExpressionAttributeValues: {
+          ':status': status,
+        },
+        ExpressionAttributeNames: {
+          '#status': 'status',
+        },
+      };
 
     try {
-        const result = await dynamodb.scan({
-            TableName: process.env.AUCTIONS_TABLENAME
-            }).promise();
-
+        const result = await dynamodb.query(params).promise();
         auctions=result.Items;
     } catch (error) {
         console.log(error);
