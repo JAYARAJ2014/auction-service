@@ -37,8 +37,8 @@ functions:
           path: /auction/{id}
   processAuctions:
     handler: src/handlers/processAuctions.handler
-    events:
-      - schedule: rate(1 minute)
+    # events:
+    #   - schedule: rate(1 minute)
   placeBid:
     handler: src/handlers/placeBid.handler
     events:

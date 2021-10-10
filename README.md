@@ -29,5 +29,7 @@ npm install
 
 - processAuctions Aws Event bridge rule
 
-TIP: You can tail the log using `sls logs -f processAuctions -t` command.
+TIPS:
 
+- You can tail the log using `sls logs -f processAuctions -t` command.
+- You can invoke function using `sls invoke -f processAuctions -l` command. `-l` flag shows logs as well.
