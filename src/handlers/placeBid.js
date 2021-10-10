@@ -19,10 +19,8 @@ async function placeBid(event, context) {
     };
     let updatedAuction; 
     try {
-        
         const result = await dynamodb.update(params).promise();
         updatedAuction=result.Attributes;
-
     } catch (error) {
         console.error(error);
         throw new createError.InternalServerError('Something went terribly wrong on our side.Please retry');    
