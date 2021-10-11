@@ -4,11 +4,11 @@ const schema = {
         body: {
             type: 'object',
             properties: {
-                title: {
-                    type: 'string',
+                amount: {
+                    type: 'number',
                 },
             },
-            required:['title'],
+            required:['amount'],
         },
     },
     required: ['body'],
